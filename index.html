@@ -19,43 +19,97 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .file-list {
-            list-style: none;
-            padding: 0;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
         }
-        li {
-            margin-bottom: 10px;
-        }
-        a {
-            text-decoration: none;
-            color: #333;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .image-container {
+        .item {
             text-align: center;
-            margin-top: 20px;
-        }
-        .image-container img {
-            width: 200px;
+            padding: 20px;
             border: 1px solid #ccc;
             border-radius: 8px;
+        }
+        .item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .item h3 {
+            margin: 0;
+        }
+        .item p {
+            margin: 10px 0;
+        }
+        .item button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .item button:hover {
+            background-color: #0056b3;
+        }
+        .item button a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+        }
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>fetchexpress</h1>
-        <ul class="file-list" id="fileList">
-            <li><a href="very-real-pokemon-card.zip" download>very-real-pokemon-card.zip</a></li>
-            <li><a href="readme.zip" download>readme.zip</a></li>
-            <li><a href="nixdeleter-by-seventygrand.zip" download>nixdeleter-by-seventygrand.zip</a></li>
-        </ul>
-
-        <div class="image-container">
-            <img id="image" src="" alt="">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchFiles()">
+        </div>
+        <div class="grid" id="fileList">
+            <div class="item">
+                <h3>very-real-pokemon-card.zip</h3>
+                <p>Description for very-real-pokemon-card.zip.</p>
+                <button><a href="idk just a random thing" download>Download</a></button>
+            </div>
+            <div class="item">
+                <h3>readme.zip</h3>
+                <p>tutorial on how to use.</p>
+                <button><a href="readme.zip" download>Download</a></button>
+            </div>
+            <div class="item">
+                <h3>nixdeleter-by-seventygrand.zip</h3>
+                <p>by the creators of this website.</p>
+                <button><a href="nixdeleter-by-seventygrand.zip" download>Download</a></button>
+            </div>
         </div>
     </div>
+
+    <script>
+        function searchFiles() {
+            var input, filter, items, item, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            items = document.getElementById("fileList").getElementsByClassName("item");
+            for (i = 0; i < items.length; i++) {
+                item = items[i].getElementsByTagName("h3")[0];
+                txtValue = item.textContent || item.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
