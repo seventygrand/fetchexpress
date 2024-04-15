@@ -29,6 +29,33 @@
             margin-top: 10px;
         }
 
+        .search-bar {
+            margin-top: 30px;
+        }
+
+        .search-input {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        .search-button {
+            padding: 8px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
         .artwork {
             font-family: monospace;
             white-space: pre-wrap;
@@ -42,6 +69,12 @@
     <div class="container">
         <div class="logo">YAS Browser</div>
         <div class="tagline">HACX Based Browser</div>
+        <div class="search-bar">
+            <form action="https://www.example.com/search" method="GET">
+                <input type="text" name="q" class="search-input" placeholder="Enter a webpage...">
+                <button type="submit" class="search-button">Go</button>
+            </form>
+        </div>
         <div class="artwork">
 yyyyyyy           yyyyyyyaaaaaaaaaaaaa      ssssssssss   
  y:::::y         y:::::y a::::::::::::a   ss::::::::::s  
